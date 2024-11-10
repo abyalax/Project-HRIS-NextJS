@@ -24,12 +24,22 @@ const authOptions: AuthOptions = {
                     password: string;
                 };
                 const user: any = await signIn(email)
-                if (user) {
-                    const passwordConfirm = await compare(password, user.password)
-                    if (passwordConfirm) {
-                        return user
+                if (user.role == "karyawan") {
+                    if (user) {
+                        const passwordConfirm = await compare(password, user.password)
+                        if (passwordConfirm) {
+                            console.log("Login as karyawan ", user);
+
+                            return user
+                        }
+                        return null
+                    } else {
+                        return null
                     }
-                    return null
+                } else if (user.role == "admin") {
+                    console.log("Login as admin ", user);
+
+                    return user
                 } else {
                     return null
                 }
@@ -41,31 +51,40 @@ const authOptions: AuthOptions = {
         })
     ],
     callbacks: {
-        async jwt({ token, account, profile, user }: any) {
+        async jwt({ token, account, user }: any) {
             if (account?.provider === "credentials") {
                 token.id = user.id;
-                token.username = user.username;
+                token.name = user.nama;
                 token.email = user.email;
+                token.image = user.image;
+                token.role = user.role;
             }
             if (account?.provider === "google") {
-
                 const data = {
-                    username: user.name,
+                    id: user.id,
+                    nama: user.name,
                     email: user.email,
+                    image: user.image,
                     type: 'google'
                 }
-
+                console.log("Data to be passed to loginWithGoogle:", data);
                 await loginWithGoogle(data, (data: any) => {
+                    token.role = data.role;
+                    token.image = data.image;
                     token.email = data.email;
-                    token.email = data.username;
-                    token.email = data.password;
-                    token.id = data.id
-                })
+                    token.id = data.id;
+                });
             }
             return token
         },
 
         async session({ session, token }: any) {
+            if ('id' in token) {
+                session.user.id = token.id;
+            }
+            if ('nama' in token) {
+                session.user.nama = token.name;
+            }
             if ('email' in token) {
                 session.user.email = token.email;
             }
@@ -75,15 +94,11 @@ const authOptions: AuthOptions = {
             if ('image' in token) {
                 session.user.image = token.image;
             }
-            if ('id' in token) {
-                session.user.id = token.id;
-            }
-
             const accesToken = jwt.sign(token, process.env.NEXTAUTH_SECRET || '', {
                 algorithm: 'HS256',
             })
-
             session.accessToken = accesToken
+
             return session
         }
     },

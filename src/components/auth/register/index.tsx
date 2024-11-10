@@ -8,8 +8,7 @@ const RegisterView = () => {
     const { push } = useRouter()
 
     const [formState, setFormState] = useState({
-        username: "",
-        nama_lengkap: "",
+        nama: "",
         email: "",
         password: ""
     })
@@ -32,10 +31,10 @@ const RegisterView = () => {
         }
         try {
             const data = {
-                username: formState.nama_lengkap.split(" ")[0],
-                nama_lengkap: formState.nama_lengkap,
+                nama: formState.nama,
                 email: formState.email,
-                password: formState.password
+                password: formState.password,
+                role: "karyawan"
             }
             const res = await authServices.registerAccount(data)
             if (res.status == 200) {
@@ -59,12 +58,12 @@ const RegisterView = () => {
         <div className="flex min-h-screen justify-center items-center text-background ">
             <div className="bg-white drop-shadow-full p-10 max-w-[400px] rounded-xl xl:w-2/3 lg:w-1/3 md:w-1/2  sm:w-2/3">
                 <div className="flex justify-between items-center my-8">
-                    <h2 className="text-2xl font-semibold ">Masuk ke HRIS</h2>
+                    <h2 className="text-2xl font-semibold ">Register Account</h2>
                     <Link href={"/auth/login"} className="text-sm font-bold text-end hover:text-primary">Login</Link>
                 </div>
                 <form className="w-full" onSubmit={onSubmit}>
 
-                    <input type="text" name="nama_lengkap" placeholder="Masukkan Nama Lengkap" onChange={(e) => onChange(e, "nama_lengkap")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-primary rounded-lg" />
+                    <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" onChange={(e) => onChange(e, "nama")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-primary rounded-lg" />
                     <p className="text-xs mb-4 text-background font-medium mt-0">Contoh: Budi Hartanto</p>
 
                     <input type="email" name="email" placeholder="Masukkan Email" onChange={(e) => onChange(e, "email")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-primary rounded-lg" />
