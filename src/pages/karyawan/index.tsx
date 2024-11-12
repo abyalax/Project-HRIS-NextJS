@@ -1,4 +1,4 @@
-import DashboardKaryawan from "@/components/karyawan/dashboard";
+import DashboardKaryawan from "@/feature/karyawan/dashboard";
 
 const DashboardKaryawanPage = () => {
     return (
@@ -6,6 +6,6 @@ const DashboardKaryawanPage = () => {
             <DashboardKaryawan />
         </>
     )
-};
+}
 
 export default DashboardKaryawanPage;

@@ -1,4 +1,4 @@
-import LoginView from '@/components/auth/login';
+import LoginView from '@/feature/auth/login';
 import React from 'react';
 
 const LoginPage = () => {

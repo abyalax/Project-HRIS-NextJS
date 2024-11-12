@@ -24,12 +24,13 @@ const authOptions: AuthOptions = {
                     password: string;
                 };
                 const user: any = await signIn(email)
+                console.log("User: ", user);
+                
                 if (user.role == "karyawan") {
                     if (user) {
                         const passwordConfirm = await compare(password, user.password)
                         if (passwordConfirm) {
                             console.log("Login as karyawan ", user);
-
                             return user
                         }
                         return null
@@ -38,7 +39,6 @@ const authOptions: AuthOptions = {
                     }
                 } else if (user.role == "admin") {
                     console.log("Login as admin ", user);
-
                     return user
                 } else {
                     return null
@@ -57,7 +57,7 @@ const authOptions: AuthOptions = {
                 token.name = user.nama;
                 token.email = user.email;
                 token.image = user.image;
-                token.role = user.role;
+                token.role = user.role
             }
             if (account?.provider === "google") {
                 const data = {
@@ -65,6 +65,7 @@ const authOptions: AuthOptions = {
                     nama: user.name,
                     email: user.email,
                     image: user.image,
+                    role: 'karyawan',
                     type: 'google'
                 }
                 console.log("Data to be passed to loginWithGoogle:", data);
@@ -75,6 +76,8 @@ const authOptions: AuthOptions = {
                     token.id = data.id;
                 });
             }
+            console.log("Assign Token:", token);
+            token.role = user.role
             return token
         },
 
@@ -98,6 +101,7 @@ const authOptions: AuthOptions = {
                 algorithm: 'HS256',
             })
             session.accessToken = accesToken
+            console.log("Assign Session", session);
 
             return session
         }

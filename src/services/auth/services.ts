@@ -12,8 +12,8 @@ export async function signUp(userData: adminType, callback: Function) {
     else {
         userData.password = await bcrypt.hash(userData.password, 10)
         await sql`
-        INSERT INTO karyawan (nama, email, password ) 
-        VALUES (${userData.nama}, ${userData.email}, ${userData.password})`
+        INSERT INTO karyawan (nama, email, password, role) 
+        VALUES (${userData.nama}, ${userData.email}, ${userData.password}, 'karyawan')`
         callback(true);
     }
 }

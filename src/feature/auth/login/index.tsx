@@ -1,17 +1,16 @@
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
 const LoginView = () => {
-    const session = useSession()
     const [formState, setFormState] = useState({
         email: "",
         password: ""
     })
     const [isLoading, setIsLoading] = useState(false);
     const { push, query } = useRouter();
-    const callbackUrl: string = Array.isArray(query.callbackUrl) ? query.callbackUrl[0] : query.callbackUrl ?? '/';
+    const callbackUrl: string = Array.isArray(query.callbackUrl) ? query.callbackUrl[0] : query.callbackUrl ?? '/karyawan';
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
         e.preventDefault();
@@ -36,10 +35,9 @@ const LoginView = () => {
                 callbackUrl
             })
             if (res?.status == 200) {
-                session.data?.user.role == "admin" ? push("/admin") : push("/karyawan")
                 alert("Login Berhasil")
                 push(callbackUrl)
-            } 
+            }
             else {
                 console.log(res?.error);
                 alert("Login Gagal")
@@ -53,19 +51,31 @@ const LoginView = () => {
         }
     }
 
+    const loginGoogle = () => {
+        try {
+            setIsLoading(true)
+            signIn("google", { callbackUrl, redirect: false })
+            alert("Login berhasil")
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
-        <div className="flex min-h-screen justify-center items-center text-background ">
-            <div className="bg-white drop-shadow-full p-10 max-w-[400px] rounded-xl xl:w-2/3 lg:w-1/3 md:w-1/2  sm:w-2/3">
+        <div className="flex min-h-screen justify-center items-center bg-gradient-to-t from-blue-400 to-blue-50">
+            <div className="bg-white shadow-2xl  p-10 max-w-[400px] rounded-xl xl:w-2/3 lg:w-1/3 md:w-1/2  sm:w-2/3">
                 <div className="flex justify-between items-center my-8">
                     <h2 className="text-2xl font-semibold ">Masuk ke HRIS</h2>
                     <Link href={"/auth/register"} className="text-sm font-bold text-end hover:text-primary">Daftar</Link>
                 </div>
                 <form className="w-full" onSubmit={onSubmit}>
-                    <input type="email" name="email" placeholder="Masukkan Email" onChange={(e) => onChange(e, "email")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-primary rounded-lg" />
+                    <input type="email" name="email" placeholder="Masukkan Email" onChange={(e) => onChange(e, "email")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded-lg" />
                     <p className="text-xs text-background font-medium mt-0">Contoh: example@gmail.com</p>
 
-                    <input type="password" name="password" placeholder="Masukkan Kata Sandi" onChange={(e) => onChange(e, "password")} className="border border-gray-400 my-4 w-full p-3 focus:outline-none focus:ring-1 focus:ring-primary rounded-lg" />
-                    <button type="submit" className="bg-primary text-foreground w-full p-2 rounded-xl my-3 font-semibold text-lg disabled:cursor-not-allowed disabled:bg-gray-500" disabled={isLoading}>{isLoading ? "Loading..." : "Selanjutnya"}</button>
+                    <input type="password" name="password" placeholder="Masukkan Kata Sandi" onChange={(e) => onChange(e, "password")} className="border border-gray-400 my-4 w-full p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded-lg" />
+                    <button type="submit" className="bg-blue-500 text-white w-full p-2 rounded-xl my-3 font-semibold text-lg disabled:cursor-not-allowed disabled:bg-gray-500" disabled={isLoading}>{isLoading ? "Loading..." : "Login"}</button>
 
                 </form>
                 <div className="flex justify-between items-center gap-2 my-3">
@@ -74,7 +84,7 @@ const LoginView = () => {
                     <hr className="border w-1/3 border-slate-300" />
                 </div>
                 <div className="flex flex-col gap-6">
-                    <button onClick={() => signIn("google", { callbackUrl, redirect: false })} className="border flex justify-center items-center gap-3 border-slate-400 w-full p-2 rounded-xl font-semibold text-lg">
+                    <button onClick={loginGoogle} className="border flex justify-center items-center gap-3 border-slate-400 w-full p-2 rounded-xl font-semibold text-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262" id="google">
                             <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"></path>
                             <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"></path>
