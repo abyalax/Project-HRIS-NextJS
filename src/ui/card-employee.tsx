@@ -16,7 +16,7 @@ const CardEmploye = ({ data, title }: CardEmployeProps) => {
             <div className="py-4">
                 <div className="relative">
                     {frmtData.map((profile, index) => (
-                        <div key={`profile-${profile.nama}-${index}`} className={`absolute top-0 left-0 ${index > 0 ? `z-10` : ''} w-14 h-14 `}
+                        <div key={`profile-${profile.nama}-${index}`} className={`absolute top-0 left-0 ${index > 0 ? `z-10` : ''} w-14 h-14 cursor-pointer`}
                             style={{ transform: `translateX(${index * 20}px)`, }}>
                             <Image priority={true} fetchPriority="high" src={profile.image} alt="profile" className="w-10 h-10 object-cover rounded-full border-2 border-white" />
                         </div>

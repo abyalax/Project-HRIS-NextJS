@@ -1,4 +1,4 @@
-import DashboardAdminLayouts from ".."
+import DashboardAdminLayouts from "../layout"
 
 const AdminAnalytics = () => {
   return (

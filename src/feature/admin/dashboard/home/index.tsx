@@ -1,13 +1,11 @@
 import Link from "next/link";
-import DashboardAdminLayouts from "..";
+import DashboardAdminLayouts from "../layout";
 import { dataAttendanceWeekly, dataRequest, employeeDayOff, employeeOnVacation, employeeSickLeave, employeeWFH } from "@/utils/dummy";
 import { Bar } from "react-chartjs-2";
 import CardEmploye from "@/ui/card-employee";
 import Chart from "chart.js/auto"
 import { CategoryScale } from "chart.js/auto";
 import { stylingStatus } from "@/utils/utils";
-import { imageAdmin } from "@/utils/getter-image";
-import Image from "next/image";
 
 Chart.register(CategoryScale);
 
@@ -43,43 +41,18 @@ const AdminDashboard = () => {
     return (
         <DashboardAdminLayouts>
 
-
+                
             <div className="w-full">
 
-                <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-semibold">Login as Admin</h2>
-                    <div className="border-2 bg-white border-slate-200 h-12 p-2 w-1/4 my-2 rounded-lg">
-                <p>pencarian</p>
-            </div>
-                    <div className="h-14 w-1/4 my-2 rounded-lg p-2 flex gap-4 justify-center item-center">
-                        <div className="relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-envelope-fill mt-4" viewBox="0 0 16 16">
-                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
-                            </svg>
-                            <span className="absolute top-4  z-10 right-0 h-2 w-2 rounded-full bg-red-500 ">.</span>
-                        </div>
-                        <div className="relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-bell-fill mt-4" viewBox="0 0 16 16">
-                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
-                            </svg>
-                            <span className="absolute top-4  z-10 right-0 h-2 w-2 rounded-full bg-red-500 ">.</span>
-                        </div>
-                        <Image src={imageAdmin} alt="admin" width={50} height={50} className="w-14 h-14 object-cover rounded-full border-2 border-white" />
-                        <div className="">
-                            <p className="text-lg">Admin HRD</p>
-                            <p className="text-sm">adminhr@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
 
                 <div className="h-15 w-full my-2 flex gap-4 text-nowrap text-black">
-                    <p className="py-3 px-2 bg-gray-400 rounded-lg">Marketing</p>
-                    <p className="py-3 px-2 bg-gray-400 rounded-lg">Finance</p>
-                    <p className="py-3 px-2 bg-gray-400 rounded-lg">Bisnis Inteligence</p>
-                    <p className="py-3 px-2 bg-gray-400 rounded-lg">Sales Departemen</p>
-                    <p className="py-3 px-2 bg-gray-400 rounded-lg">Research & Development</p>
-                    <p className="py-3 px-2 bg-gray-400 rounded-lg">Customer Services</p>
-                    <p className="py-3 px-2 bg-gray-400 rounded-lg">Informatics</p>
+                    <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Marketing</p>
+                    <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Finance</p>
+                    <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Bisnis Inteligence</p>
+                    <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Sales Departemen</p>
+                    <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Research & Development</p>
+                    <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Customer Services</p>
+                    <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Informatics</p>
                 </div>
 
 

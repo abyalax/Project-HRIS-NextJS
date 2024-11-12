@@ -4,8 +4,11 @@ const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/feature/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/feature/admin/dashboard/absensi/*.{js,ts,jsx,tsx,mdx}",
+    "./src/feature/admin/dashboard/karyawan/*.{js,ts,jsx,tsx,mdx}",
+    "./src/feature/admin/dashboard/analisis/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/ui/**/*.{js,ts,jsx,tsx,mdx}"
+    "./src/ui/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {

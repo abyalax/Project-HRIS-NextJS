@@ -25,15 +25,15 @@ export function formatDate(dateString: Date | null) {
 export const stylingStatus = (status: string) => {
   switch (status) {
       case "Pending":
-          return "bg-[#FFC107]"; // Kuning terang
+          return "bg-yellow-500";
       case "New":
-          return "bg-[#2196F3]"; // Biru muda
+          return "bg-blue-500"; 
       case "Approved":
-          return "bg-[#4CAF50]"; // Hijau
+          return "bg-green-500";
       case "Rejected":
-          return "bg-[#F44336]"; // Merah
+          return "bg-red-500";
       case "Completed":
-          return "bg-[#9E9E9E]"; // Abu-abu netral
+          return "bg-gray-400";
       default:
           return "";
   }

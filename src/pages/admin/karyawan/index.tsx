@@ -1,10 +1,8 @@
-import DashboardAdminLayouts from "@/feature/admin/dashboard"
+import AdminKaryawan from "@/feature/admin/dashboard/karyawan";
 
 const AdminKaryawanPage = () => {
     return (
-        <DashboardAdminLayouts>
-            <div>AdminKaryawanPage</div>
-        </DashboardAdminLayouts>
+        <AdminKaryawan />
     )
 };
 
