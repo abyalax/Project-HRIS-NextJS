@@ -22,17 +22,20 @@ export function formatDate(dateString: Date | null) {
   return `${dayName}, ${day} ${monthName} ${year}`;
 }
 
-
-export const generateYAxis = (revenue: attendanceMonthlyType[]) => {
-  // Calculate what labels we need to display on the y-axis
-  // based on highest record and in 1000s
-  const yAxisLabels = [];
-  const highestRecord = Math.max(...revenue.map((month) => month.jumlah));
-  const topLabel = Math.ceil(highestRecord / 1000) * 1000;
-
-  for (let i = topLabel; i >= 0; i -= 1000) {
-    yAxisLabels.push(`$${i / 1000}K`);
+export const stylingStatus = (status: string) => {
+  switch (status) {
+      case "Pending":
+          return "bg-[#FFC107]"; // Kuning terang
+      case "New":
+          return "bg-[#2196F3]"; // Biru muda
+      case "Approved":
+          return "bg-[#4CAF50]"; // Hijau
+      case "Rejected":
+          return "bg-[#F44336]"; // Merah
+      case "Completed":
+          return "bg-[#9E9E9E]"; // Abu-abu netral
+      default:
+          return "";
   }
+}
 
-  return { yAxisLabels, topLabel };
-};

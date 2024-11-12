@@ -9,8 +9,10 @@ import h from "/public/assets/karyawan/8.jpg"
 import i from "/public/assets/karyawan/9.jpg"
 import j from "/public/assets/karyawan/10.jpg"
 
+import imageAdmin from "/public/assets/admin/admin.jpg"
+
 const dataImageEmployee = [
     a, b, c, d, e, f, g, h, i, j
 ]
 
-export { dataImageEmployee }
+export { dataImageEmployee, imageAdmin }
