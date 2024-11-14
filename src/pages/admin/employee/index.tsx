@@ -1,4 +1,4 @@
-import AdminKaryawan from "@/feature/admin/dashboard/karyawan";
+import AdminKaryawan from "@/feature/admin/dashboard/employee";
 
 const AdminKaryawanPage = () => {
     return (

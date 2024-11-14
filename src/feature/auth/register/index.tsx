@@ -55,7 +55,7 @@ const RegisterView = () => {
     }
 
     return (
-        <div className="flex min-h-screen justify-center items-center bg-gradient-to-t from-blue-400 to-blue-50">
+        <div className="flex min-h-screen justify-center items-center bg-[#edf0f7]">
             <div className="bg-white drop-shadow-full p-10 max-w-[400px] rounded-xl xl:w-2/3 lg:w-1/3 md:w-1/2  sm:w-2/3">
                 <div className="flex justify-between items-center my-8">
                     <h2 className="text-2xl font-semibold ">Register Account</h2>

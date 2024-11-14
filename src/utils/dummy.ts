@@ -1,6 +1,6 @@
 import { dataImageEmployee } from "./getter-image";
 
-export const karyawan = [
+export const dataKaryawan = [
     {
         nama: 'John Doe',
         alamat: 'Jl. Raya No. 123',
@@ -56,7 +56,6 @@ export const karyawan = [
         tanggal_bergabung: '2018-02-18'
     },
     {
-        nama: 'David Miller',
         alamat: 'Jl. Pertiwi No. 88',
         no_telepon: '081234567896',
         jabatan: 'Staff',
@@ -138,8 +137,7 @@ export const karyawan = [
     }
 ];
 
-
-export const employeeWFH = [
+export const dataEmployeeWFH = [
     {
         nama: 'John Doe',
         image: dataImageEmployee[0]
@@ -170,7 +168,7 @@ export const employeeWFH = [
     },
 ]
 
-export const employeeOnVacation = [
+export const dataEmployeeOnVacation = [
     {
         nama: 'Michael Brown',
         image: dataImageEmployee[3]
@@ -185,7 +183,7 @@ export const employeeOnVacation = [
     },
 ]
 
-export const employeeOnPermissions = [
+export const dataEmployeeOnPermissions = [
     {
         nama: 'Jane Smith',
         image: dataImageEmployee[6]
@@ -204,7 +202,7 @@ export const employeeOnPermissions = [
     },
 ]
 
-export const employeeDayOff = [
+export const dataEmployeeDayOff = [
     {
         nama: 'Jane Smith',
         image: dataImageEmployee[6]
@@ -223,7 +221,7 @@ export const employeeDayOff = [
     },
 ]
 
-export const employeeBisnisTrip = [
+export const dataEmployeeBisnisTrip = [
     {
         nama: 'Jane Smith',
         image: dataImageEmployee[6]
@@ -242,7 +240,7 @@ export const employeeBisnisTrip = [
     },
 ]
 
-export const employeeSickLeave = [
+export const dataEmployeeSickLeave = [
     {
         nama: 'Jane Smith',
         image: dataImageEmployee[6]
@@ -259,29 +257,102 @@ export const employeeSickLeave = [
 
 export const dataAttendanceWeekly = [
     {
-        id: 1,
-        day: 'Senin',
+        title: 'Senin',
         attendance: 55,
     },
     {
-        id: 2,
-        day: 'Selasa',
+        title: 'Selasa',
         attendance: 52,
     },
     {
-        id: 3,
-        day: 'Rabu',
+        title: 'Rabu',
         attendance: 47,
     },
     {
-        id: 4,
-        day: 'Kamis',
+        title: 'Kamis',
         attendance: 59,
     },
     {
-        id: 5,
-        day: 'Jumat',
+        title: 'Jumat',
         attendance: 51,
+    }
+];
+
+export const dataAttendanceMonthly = [
+    {
+        title: 'Januari',
+        attendance: 1200,
+    },
+    {
+        title: 'Februari',
+        attendance: 1150,
+    },
+    {
+        title: 'Maret',
+        attendance: 1250,
+    },
+    {
+        title: 'April',
+        attendance: 1300,
+    },
+    {
+        title: 'Mei',
+        attendance: 1220,
+    },
+    {
+        title: 'Juni',
+        attendance: 1185,
+    },
+    {
+        title: 'Juli',
+        attendance: 1240,
+    },
+    {
+        title: 'Agustus',
+        attendance: 1215,
+    },
+    {
+        title: 'September',
+        attendance: 1270,
+    },
+    {
+        title: 'Oktober',
+        attendance: 1195,
+    },
+    {
+        title: 'November',
+        attendance: 1230,
+    },
+    {
+        title: 'Desember',
+        attendance: 1260,
+    }
+];
+
+export const dataAttendanceYearly = [
+    {
+        title: '2019',
+        attendance: 12000,
+    },
+    {
+        title: '2020',
+        attendance: 11550,
+    },
+    {
+        title: '2021',
+        attendance: 12500,
+    },
+    {
+        title: '2022',
+        attendance: 13000,
+    },
+    {
+        title: '2023',
+        attendance: 12750,
+    },
+    {
+        title: '2024',
+        attendance: 13200,
     }
 ];
 
@@ -300,10 +371,8 @@ export const dataRequest = [
         type: "Sick Leave",
         status: "Approved",
         date: "Yesterday",
-        notes: "Medical Certificate Provided"
     },
     {
-        name: "David Brown",
         period: "15 Apr - 25 Apr",
         type: "Business Trip",
         status: "Pending",
@@ -348,7 +417,6 @@ export const dataRequest = [
         type: "Vacation",
         status: "New",
         date: "Today",
-        notes: "Summer holiday"
     },
     {
         name: "Daniel Martinez",
@@ -388,7 +456,6 @@ export const dataRequest = [
         type: "Vacation",
         status: "New",
         date: "Today",
-        notes: "End of year holiday"
     },
     {
         name: "Lisa Harris",
@@ -407,3 +474,154 @@ export const dataRequest = [
         notes: "Winter vacation"
     }
 ];
+
+export const dataPresent = [
+    {
+        name: "John Doe",
+        position: "IT Specialist",
+        workType: "On Site",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "Jane Smith",
+        position: "Software Engineer",
+        workType: "Remote",
+        status: "Late",
+        lateDuration: "00:15:00",  // 15 minutes late
+        notes: "Traffic delay"
+    },
+    {
+        name: "Robert Johnson",
+        position: "IT Support",
+        workType: "On Site",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "Emily Davis",
+        position: "IT Manager",
+        workType: "On Site",
+        status: "Absent",
+        lateDuration: "00:00:00",  // Absent, no delay
+        notes: "Sick leave"
+    },
+    {
+        name: "Michael Brown",
+        position: "System Administrator",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "Sarah Wilson",
+        position: "Web Developer",
+        workType: "On Site",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        position: "Network Engineer",
+        workType: "Remote",
+        status: "Late",
+        lateDuration: "00:30:00",  // 30 minutes late
+        notes: "Internet issues"
+    },
+    {
+        name: "Linda Taylor",
+        position: "IT Consultant",
+        workType: "On Site",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "James Miller",
+        position: "Security Analyst",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "Patricia Moore",
+        position: "Cloud Architect",
+        workType: "On Site",
+        status: "Absent",
+        lateDuration: "00:00:00",  // Absent, no delay
+        notes: "Personal leave"
+    },
+    {
+        name: "Chris Anderson",
+        position: "Database Administrator",
+        workType: "On Site",
+        status: "Late",
+        lateDuration: "00:20:00",  // 20 minutes late
+        notes: "Delayed flight"
+    },
+    {
+        name: "Nancy Thomas",
+        position: "DevOps Engineer",
+        workType: "Remote",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "George Jackson",
+        position: "Front-End Developer",
+        workType: "On Site",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "Jessica White",
+        position: "Back-End Developer",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    },
+    {
+        name: "William Harris",
+        position: "Software Tester",
+        workType: "Remote",
+        status: "On Time",
+        lateDuration: "00:00:00",  // No delay
+        notes: ""
+    }
+];
+
+export const dataTotalEmployeeByDepartement = [
+    {
+        title: "IT Department",
+        total: 10
+    },
+    {
+        title: "Marketing",
+        total: 16
+    },
+    {
+        title: "Finance",
+        total: 13
+    },
+    {
+        title: "Business Intelligence",
+        total: 8
+    },
+    {
+        title: "Sales Department",
+        total: 12
+    },
+    {
+        title: "Research & Development",
+        total: 9
+    },
+    {
+        title: "Customer Services",
+        total: 14
+    }
+];
+

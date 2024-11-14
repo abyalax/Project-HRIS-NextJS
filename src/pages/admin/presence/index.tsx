@@ -1,4 +1,4 @@
-import AdminAbsensi from "@/feature/admin/dashboard/absensi";
+import AdminAbsensi from "@/feature/admin/dashboard/presence";
 
 const AdminAbsensiPage = () => {
     return (

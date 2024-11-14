@@ -1,3 +1,4 @@
+//jpg
 import a from "/public/assets/karyawan/1.jpg"
 import b from "/public/assets/karyawan/2.jpg"
 import c from "/public/assets/karyawan/3.jpg"
@@ -11,8 +12,16 @@ import j from "/public/assets/karyawan/10.jpg"
 
 import imageAdmin from "/public/assets/admin/admin.jpg"
 
+//svg
+import req from "/public/assets/icons/request.svg"
+
+
 const dataImageEmployee = [
     a, b, c, d, e, f, g, h, i, j
 ]
 
-export { dataImageEmployee, imageAdmin }
+const icons = {
+    req
+}
+
+export { dataImageEmployee, imageAdmin, icons }

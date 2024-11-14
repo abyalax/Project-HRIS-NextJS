@@ -2,6 +2,9 @@ import SidebarNavigation from "@/utils/route-sidebar";
 import Link from "next/link";
 import Image from "next/image";
 import { imageAdmin } from "@/utils/getter-image";
+import Chart, { CategoryScale } from "chart.js/auto";
+
+Chart.register(CategoryScale);
 
 const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
 
@@ -14,7 +17,6 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
       <div className="relative h-full w-full px-10">
         <aside className='fixed left-0 top-0 bg-white  h-screen w-64 flex flex-col space-y-2 gap-2 p-4'>
           <div className='flex flex-col justify-between h-full'>
-
 
             <div className='flex flex-col gap-2'>
               <div className="mb-14 mt-10 mx-auto">
@@ -52,14 +54,16 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
         <main className="pl-60 pt-12 w-full">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold">Login as Admin</h2>
-            <div className="border-2 bg-white border-slate-200 h-12 w-1/4 my-2 rounded-lg flex">
-              <div className="w-1/6 h-full flex items-center justify-center">
+
+            <div className="border-2 bg-white border-slate-200 h-12 w-1/2 my-2 rounded-lg flex">
+              <div className="w-1/12 h-full flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                 </svg>
               </div>
               <input type="text" placeholder="Search Here..." className="w-full h-full p-2 border-b border-t border-l border-l-slate-400 border-slate-200 focus:outline-none appearance-none focus:ring-0 placeholder:text-slate-600 rounded-tr-lg rounded-br-lg" />
             </div>
+
             <div className="h-14 w-1/4 my-2 rounded-lg p-2 flex gap-4 justify-center item-center">
               <div className="relative">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-envelope-fill mt-4" viewBox="0 0 16 16">
@@ -79,6 +83,21 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
                 <p className="text-sm">adminhr@gmail.com</p>
               </div>
             </div>
+          </div>
+          <div className="h-15 w-full my-2 flex gap-4 text-nowrap text-black overflow-x-auto no-scrollbar">
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Overall</p>
+            <p className="py-3 px-2 bg-gray-700 text-white rounded-lg cursor-pointer">IT Departmen</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Marketing</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Finance</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Bisnis Inteligence</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Sales Departemen</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Research & Development</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Customer Services</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">IT Departemen</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Bisnis Inteligence</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Sales Departemen</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Research & Development</p>
+            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Customer Services</p>
           </div>
           {children}
         </main>
