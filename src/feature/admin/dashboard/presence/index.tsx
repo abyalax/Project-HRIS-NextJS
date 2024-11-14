@@ -42,8 +42,9 @@ const AdminAbsensi = () => {
             </thead>
             <tbody>
               {dataPresent.slice(0, 6).map((data, index) => (
-                <tr key={data.name + data.workType}>
-                  <td className="px-3 py-3">{data.name.length > 50 ? data.name.slice(0, 50) + "..." : data.name}</td>
+
+                <tr key={index}>
+                  <td className="px-3 py-3">{data.name?.length !== undefined && data.name.length > 50 ? data.name.slice(0, 50) + "..." : data.name}</td>
                   <td className="px-3 py-3">{data.position}</td>
                   <td className="px-3 py-3">{data.workType}</td>
                   <td className="px-3 py-3 flex items-center">
