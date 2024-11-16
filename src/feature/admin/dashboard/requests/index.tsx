@@ -4,6 +4,7 @@ import { dataRequest } from "@/utils/dummy";
 import { stylingStatus } from "@/utils/utils";
 
 const AdminRequests = () => {
+    
     return (
         <DashboardAdminLayouts>
             <main className="p-2">

@@ -373,6 +373,7 @@ export const dataRequest = [
         date: "Yesterday",
     },
     {
+        name: "Michael Johnson",
         period: "15 Apr - 25 Apr",
         type: "Business Trip",
         status: "Pending",

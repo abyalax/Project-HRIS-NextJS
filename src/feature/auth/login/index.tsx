@@ -51,10 +51,15 @@ const LoginView = () => {
         }
     }
 
-    const loginGoogle = () => {
+    const loginGoogle = async () => {
         try {
             setIsLoading(true)
-            signIn("google", { callbackUrl, redirect: false })
+            const res = await signIn("google", { callbackUrl, redirect: false })
+            if (res) {
+                push(callbackUrl)
+            } else {
+                console.log(res);
+            }
             alert("Login berhasil")
         } catch (error) {
             console.log(error);

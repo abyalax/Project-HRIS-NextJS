@@ -25,7 +25,7 @@ const authOptions: AuthOptions = {
                 };
                 const user: any = await signIn(email)
                 console.log("User: ", user);
-                
+
                 if (user.role == "karyawan") {
                     if (user) {
                         const passwordConfirm = await compare(password, user.password)
@@ -52,17 +52,22 @@ const authOptions: AuthOptions = {
     ],
     callbacks: {
         async jwt({ token, account, user }: any) {
+            console.log("JWT Callback - Token:", token);
+            console.log("JWT Callback - Account:", account);
+            console.log("JWT Callback - User:", user);
             if (account?.provider === "credentials") {
                 token.id = user.id;
-                token.name = user.nama;
+                token.name = user.name;
                 token.email = user.email;
                 token.image = user.image;
                 token.role = user.role
             }
             if (account?.provider === "google") {
+                console.log("User: ", user);
+
                 const data = {
                     id: user.id,
-                    nama: user.name,
+                    name: user.name,
                     email: user.email,
                     image: user.image,
                     role: 'karyawan',
@@ -70,6 +75,7 @@ const authOptions: AuthOptions = {
                 }
                 console.log("Data to be passed to loginWithGoogle:", data);
                 await loginWithGoogle(data, (data: any) => {
+                    token.name = data.name;
                     token.role = data.role;
                     token.image = data.image;
                     token.email = data.email;
@@ -77,16 +83,17 @@ const authOptions: AuthOptions = {
                 });
             }
             console.log("Assign Token:", token);
-            token.role = user.role
             return token
         },
 
         async session({ session, token }: any) {
+            console.log("Session Callback - Token:", token);
+            console.log("Session Callback - Session:", session);
             if ('id' in token) {
                 session.user.id = token.id;
             }
-            if ('nama' in token) {
-                session.user.nama = token.name;
+            if ('name' in token) {
+                session.user.name = token.name;
             }
             if ('email' in token) {
                 session.user.email = token.email;

@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import localFont from "next/font/local";
 import { useRouter } from "next/router";
 
@@ -15,6 +16,7 @@ const geistMono = localFont({
 export default function Home() {
 
   const { push } = useRouter()
+  const { data, status } = useSession();
 
   return (
     <div
@@ -43,8 +45,16 @@ export default function Home() {
 
       </nav>
 
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <h2 className="text-3xl font-semibold">This App is still Development.</h2>
+      <main className="row-start-2 flex flex-col gap-6">
+        <h2 className="text-3xl font-semibold">Data User</h2>
+        {status === "authenticated" && <pre>{JSON.stringify(data.user, null, 2)} authenticated</pre>}
+        {status === "unauthenticated" && <pre>{JSON.stringify(data, null, 2)} unauthenticated</pre>}
+        {status === "loading" && <pre>Loading</pre>}
+
+      </main>
+
+      <footer className="row-start-3 flex flex-col gap-6 flex-wrap items-center justify-center">
+        <h2 className="text-3xl font-semibold">This is a Demo App</h2>
         <h2 className="text-3xl font-semibold">Go to The Routes /admin to see the dashboard or Click This Button</h2>
         <button onClick={() => push('/admin')} className="py-2 px-4 rounded-lg bg-blue-500 text-white font-semibold">
           See Dashboard

@@ -34,7 +34,7 @@ export async function signIn(email: string) {
 
 interface googleType {
     id: string,
-    nama: string,
+    name: string,
     email: string,
     password?: string,
 }
@@ -53,7 +53,7 @@ export async function loginWithGoogle(data: googleType, callback: Function) {
         data.password = ''
         const res = await sql`
             INSERT INTO karyawan ( id_karyawan ,nama, email, password, role) 
-            VALUES (${data.id}, ${data.nama}, ${data.email}, ${data.password}, 'karyawan')`
+            VALUES (${data.id}, ${data.name}, ${data.email}, ${data.password}, 'karyawan')`
         if (res) {
             callback(data)
         } else {

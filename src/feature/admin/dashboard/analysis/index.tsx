@@ -44,7 +44,7 @@ const AdminAnalytics = () => {
     labels: dataTotalEmployeeByDepartement.map((data) => data.title),
     datasets: [
       {
-        label: "Total Headcount: ",
+        label: "Total Headcount ",
         data: dataTotalEmployeeByDepartement.map((data) => data.total),
         backgroundColor: [
           "rgba(75,192,192,1)",
@@ -58,8 +58,10 @@ const AdminAnalytics = () => {
   const configHeadCount = {
     plugins: {
       title: { display: false, },
-      legend: { display: false }
+      legend: { display: false, },
+      labels: { font: { size: 14 }, },
     },
+    aspectRatio: 4 / 1,
     scales: {
       y: {
         beginAtZero: false, min: getMinValue(dataTotalEmployeeByDepartement, "total") - 2, ticks: { stepSize: 2 }
@@ -70,6 +72,13 @@ const AdminAnalytics = () => {
   return (
     <DashboardAdminLayouts>
       <main>
+
+        <div className="border-2 bg-white border-slate-200 h-fit w-full rounded-lg my-4 mr-4 p-2">
+          <p className="text-lg my-2 mx-4 font-semibold">Headcount by Department</p>
+          <div className="h-[40vh] w-full">
+            <Bar data={dataChartHeadCount} options={configHeadCount} />
+          </div>
+        </div>
 
         <div className="flex gap-5">
           <div className="border-2 bg-white border-slate-200 h-fit w-1/2 rounded-lg my-4 mr-4 p-2">
@@ -84,13 +93,6 @@ const AdminAnalytics = () => {
             <button className="py-1 w-full rounded-md bg-green-500 my-1" onClick={() => { setData(dataAttendanceWeekly); setTitle("Weekly") }}>Weekly</button>
             <button className="py-1 w-full rounded-md bg-blue-500 my-1" onClick={() => { setData(dataAttendanceMonthly); setTitle("Monthly") }}>Monthly</button>
             <button className="py-1 w-full rounded-md bg-yellow-500 my-1" onClick={() => { setData(dataAttendanceYearly); setTitle("Yearly") }}>Year</button>
-          </div>
-        </div>
-
-        <div className="border-2 bg-white border-slate-200 h-fit w-full rounded-lg my-4 mr-4 p-2">
-          <p className="text-center">Headcount by Department</p>
-          <div className="h-[40vh] w-full">
-            <Bar data={dataChartHeadCount} options={configHeadCount} />
           </div>
         </div>
 
