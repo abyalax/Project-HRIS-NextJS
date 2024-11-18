@@ -7,7 +7,7 @@ import { getMinValue } from "@/utils/utils";
 const AdminAnalytics = () => {
   const [minY, setMinY] = useState(0)
   const [data, setData] = useState(dataAttendanceWeekly)
-  const [title, setTitle] = useState("")
+  const [title, setTitle] = useState("Weekly")
 
   useEffect(() => {
     const min = getMinValue(data, "attendance");
@@ -71,7 +71,7 @@ const AdminAnalytics = () => {
 
   return (
     <DashboardAdminLayouts>
-      <main>
+      <main className="mb-96">
 
         <div className="border-2 bg-white border-slate-200 h-fit w-full rounded-lg my-4 mr-4 p-2">
           <p className="text-lg my-2 mx-4 font-semibold">Headcount by Department</p>
@@ -80,20 +80,25 @@ const AdminAnalytics = () => {
           </div>
         </div>
 
-        <div className="flex gap-5">
-          <div className="border-2 bg-white border-slate-200 h-fit w-1/2 rounded-lg my-4 mr-4 p-2">
+        <div className="w-1/2">
+          <div className="border-2 bg-white border-slate-200 h-fit w-full rounded-lg mr-4 p-2">
             <p className="text-center">Attendance Statistics {title}</p>
             <div className="h-[40vh]">
               <Bar data={dataChartAttendance} options={configAttendance} />
             </div>
           </div>
 
-          <div className="w-1/5 bg-white rounded-lg border-2 border-slate-200 p-3 text-white">
-            <p className="text-center text-gray-700 font-semibold text-lg">Filter</p>
-            <button className="py-1 w-full rounded-md bg-green-500 my-1" onClick={() => { setData(dataAttendanceWeekly); setTitle("Weekly") }}>Weekly</button>
-            <button className="py-1 w-full rounded-md bg-blue-500 my-1" onClick={() => { setData(dataAttendanceMonthly); setTitle("Monthly") }}>Monthly</button>
-            <button className="py-1 w-full rounded-md bg-yellow-500 my-1" onClick={() => { setData(dataAttendanceYearly); setTitle("Yearly") }}>Year</button>
+
+          <div className=" bg-white rounded-lg border-2 border-slate-200 p-3 text-white">
+            <p className="text-gray-700 font-semibold text-lg">Attendance : 70</p>
+            <div className="flex gap-4 items-center">
+              <p className="text-gray-700 font-semibold text-lg">Filter :</p>
+              <button className="py-1 px-4 rounded-md bg-green-500 hover:bg-green-600 my-1" onClick={() => { setData(dataAttendanceWeekly); setTitle("Weekly") }}>Weekly</button>
+              <button className="py-1 px-4 rounded-md bg-blue-500 hover:bg-blue-600 my-1" onClick={() => { setData(dataAttendanceMonthly); setTitle("Monthly") }}>Monthly</button>
+              <button className="py-1 px-4 rounded-md bg-yellow-500 hover:bg-yellow-600 my-1" onClick={() => { setData(dataAttendanceYearly); setTitle("Yearly") }}>Year</button>
+            </div>
           </div>
+
         </div>
 
       </main>

@@ -1,10 +1,10 @@
-import { AuthOptions } from "next-auth";
+import NextAuth from "next-auth";
 
 declare module "next-auth" {
     interface User {
         id: string;
         role: string;
-        nama: string;
+        name: string;
         email: string;
         image: string | null;
     }

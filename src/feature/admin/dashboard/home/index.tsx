@@ -8,22 +8,22 @@ import { useEffect, useState } from "react";
 
 const AdminDashboard = () => {
 
-    const [data, setData] = useState(dataAttendanceWeekly)
+    const [dataAttendance, setDataAttendance] = useState(dataAttendanceWeekly)
     const [title, setTitle] = useState("")
     const [minY, setMinY] = useState<number>(0)
 
     useEffect(() => {
-        const min = getMinValue(data, "attendance");
+        const min = getMinValue(dataAttendance, "attendance");
         setMinY(min - 5);
-    }, [data, minY]);
+    }, [dataAttendance, minY]);
 
 
     const chartData = {
-        labels: data.map((data) => data.title),
+        labels: dataAttendance.map((data) => data.title),
         datasets: [
             {
                 label: "Total Attendance: ",
-                data: data.map((data) => data.attendance),
+                data: dataAttendance.map((data) => data.attendance),
                 backgroundColor: [
                     "rgba(75,192,192,1)",
                     "#50AF95",
@@ -73,9 +73,9 @@ const AdminDashboard = () => {
 
                                 <div className="w-1/5 bg-white rounded-lg border-2 border-slate-200 p-3 text-white">
                                     <p className="text-center text-gray-700 font-semibold text-lg">Filter</p>
-                                    <button className="py-1 w-full rounded-md bg-green-500 my-1" onClick={() => { setData(dataAttendanceWeekly); setTitle("Weekly") }}>Weekly</button>
-                                    <button className="py-1 w-full rounded-md bg-blue-500 my-1" onClick={() => { setData(dataAttendanceMonthly); setTitle("Monthly") }}>Monthly</button>
-                                    <button className="py-1 w-full rounded-md bg-yellow-500 my-1" onClick={() => { setData(dataAttendanceYearly); setTitle("Yearly") }}>Year</button>
+                                    <button className="py-1 w-full rounded-md bg-green-500 my-1" onClick={() => { setDataAttendance(dataAttendanceWeekly); setTitle("Weekly") }}>Weekly</button>
+                                    <button className="py-1 w-full rounded-md bg-blue-500 my-1" onClick={() => { setDataAttendance(dataAttendanceMonthly); setTitle("Monthly") }}>Monthly</button>
+                                    <button className="py-1 w-full rounded-md bg-yellow-500 my-1" onClick={() => { setDataAttendance(dataAttendanceYearly); setTitle("Yearly") }}>Year</button>
                                 </div>
 
                                 <div className="border-2 bg-white w-4/5 border-slate-200 h-40 rounded-lg m-1 px-6 py-2">

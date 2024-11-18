@@ -12,6 +12,8 @@ import j from "/public/assets/karyawan/10.jpg"
 
 import imageAdmin from "/public/assets/admin/admin.jpg"
 
+import user from "/public/assets/user.jpg"
+
 //svg
 import req from "/public/assets/icons/request.svg"
 
@@ -24,4 +26,4 @@ const icons = {
     req
 }
 
-export { dataImageEmployee, imageAdmin, icons }
+export { dataImageEmployee, imageAdmin, icons, user }

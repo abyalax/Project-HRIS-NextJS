@@ -2,6 +2,7 @@ import Dropdown from "@/ui/drop-down";
 import DashboardAdminLayouts from "../layout"
 import { dataPresent } from "@/utils/dummy";
 import { convertLateDuration, stylingStatus } from "@/utils/utils";
+import Link from "next/link";
 
 const AdminAbsensi = () => {
   return (
@@ -60,10 +61,10 @@ const AdminAbsensi = () => {
                       </svg>
                       <Dropdown ID={`action-${index}`} custom="right-4 top-2">
                         <div className="flex gap-2 flex-col p-2 rounded-lg border-2 border-slate-300 drop-shadow-2xl">
-                          <button className="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-400 flex items-center justify-center rounded text-white text-sm">Details</button>
-                          <button className="px-2.5 py-1.5 bg-green-600 hover:bg-green-400 flex items-center justify-center rounded text-white text-sm">Contact</button>
-                          <button className="px-2.5 py-1.5 bg-red-500 hover:bg-red-400 flex items-center justify-center rounded text-white text-sm">Report</button>
-                          <button className="px-2.5 py-1.5 bg-yellow-500 hover:bg-yellow-300 flex items-center justify-center rounded text-white text-sm">Dismiss</button>
+                          <Link href={""} className="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-400 flex items-center justify-center rounded text-white text-sm">Details</Link>
+                          <Link href={""} className="px-2.5 py-1.5 bg-green-600 hover:bg-green-400 flex items-center justify-center rounded text-white text-sm">Contact</Link>
+                          <Link href={""} className="px-2.5 py-1.5 bg-red-500 hover:bg-red-400 flex items-center justify-center rounded text-white text-sm">Report</Link>
+                          <Link href={""} className="px-2.5 py-1.5 bg-yellow-500 hover:bg-yellow-300 flex items-center justify-center rounded text-white text-sm">Dismiss</Link>
                         </div>
                       </Dropdown>
                     </button>

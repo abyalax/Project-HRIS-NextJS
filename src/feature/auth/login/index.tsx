@@ -10,7 +10,7 @@ const LoginView = () => {
     })
     const [isLoading, setIsLoading] = useState(false);
     const { push, query } = useRouter();
-    const callbackUrl: string = Array.isArray(query.callbackUrl) ? query.callbackUrl[0] : query.callbackUrl ?? '/karyawan';
+    const callbackUrl: string = Array.isArray(query.callbackUrl) ? query.callbackUrl[0] : query.callbackUrl ?? '/';
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
         e.preventDefault();

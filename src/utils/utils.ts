@@ -1,5 +1,8 @@
 import { type ClassValue, clsx } from "clsx"
+import { NextApiRequest, NextApiResponse } from "next";
 import { twMerge } from "tailwind-merge"
+import { responseAPI } from "./responseApi";
+import jwt from "jsonwebtoken"
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -58,14 +61,24 @@ export function convertLateDuration(timeString: string) {
  const time3 = "00:00:00";  // On Time
  */
  type DataItem = Record<string, any>;
-
  export const getMinValue = (data: DataItem[], key: string): number => {
      if (data.length === 0) return 0;
- 
      const min = Math.min(...data.map((item) => item[key]));
-     console.log(Number(min));
-     
      return Number(min);
- };
-
-
+ }; 
+ 
+ export const verify = (req: NextApiRequest, res: NextApiResponse, isAdmin: boolean, callback: Function) => {
+     const token = req.headers.authorization?.split(' ')[1];
+     if (token) {
+         jwt.verify(token, process.env.NEXTAUTH_SECRET || '',
+             async (err: any, decoded: any) => {
+                 if (decoded && (isAdmin ? decoded.role === 'admin' : true) ) {
+                     callback(decoded)
+                 } else {
+                     return responseAPI(res, false, 400, "Failed to verify token" )
+                 }
+             })
+     } else {
+         return responseAPI(res, false, 403, "Access Denied")
+     }
+ }

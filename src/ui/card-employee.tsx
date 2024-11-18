@@ -22,7 +22,7 @@ const CardEmploye = ({ data, title }: CardEmployeProps) => {
                         </div>
                     ))}
                     {data.length > 3 && (
-                        <div className="absolute top-0 left-11 z-40 w-10 text-2xl pb-3 h-10 bg-slate-500 text-white border-2 border-white flex items-center justify-center rounded-full">
+                        <div className="absolute top-0 left-11 z-10 w-10 text-2xl pb-3 h-10 bg-slate-500 text-white border-2 border-white flex items-center justify-center rounded-full">
                             ...
                         </div>
                     )}

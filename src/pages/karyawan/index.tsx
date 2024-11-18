@@ -1,4 +1,4 @@
-import DashboardKaryawan from "@/feature/karyawan/dashboard";
+import DashboardKaryawan from "@/feature/karyawan/layout";
 
 const DashboardKaryawanPage = () => {
     return (

@@ -3,19 +3,29 @@ import Link from "next/link";
 import Image from "next/image";
 import { imageAdmin } from "@/utils/getter-image";
 import Chart, { CategoryScale } from "chart.js/auto";
+import { signOut, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 Chart.register(CategoryScale);
 
 const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
 
+  const { data } = useSession();
   const routes = SidebarNavigation()
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true)
+    return () => { };
+  }, []);
+
 
   return (
 
     <div className="flex flex-row w-full min-h-screen  bg-[#edf0f7]  text-gray-700">
 
       <div className="relative h-full w-full px-10">
-        <aside className='fixed left-0 top-0 bg-white  h-screen w-64 flex flex-col space-y-2 gap-2 p-4'>
+        <aside className='fixed z-30 left-0 top-0 bg-white  h-screen w-56 flex flex-col space-y-2 gap-2 p-4'>
           <div className='flex flex-col justify-between h-full'>
 
             <div className='flex flex-col gap-2'>
@@ -31,27 +41,26 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
                   {item.icon}
                   {item.name}
                 </Link>
-
               ))}
-
             </div>
 
-
             <div className='w-full border-t-2 border-gray-300'>
-              <button className="hover:bg-slate-500 bg-transparent rounded-xl text-gray-600 hover:text-white flex gap-3 items-center justify-center text-base font-semibold py-3 w-full ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z" />
-                  <path fillRule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
-                </svg>
-                Sign Out
-              </button>
+              {isClient && (
+                <button onClick={() => signOut({ callbackUrl: "/auth/login" })} className="hover:bg-slate-500 bg-transparent rounded-xl text-gray-600 hover:text-white flex gap-3 items-center justify-center text-base font-semibold py-3 w-full ">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z" />
+                    <path fillRule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+                  </svg>
+                  Sign Out
+                </button>
+              )}
             </div>
 
 
           </div>
         </aside>
 
-        <main className="pl-60 pt-12 w-full">
+        <main className="pl-52 pt-4 w-full sticky top-0 bg-[#edf0f7] z-20">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-semibold">Login as Admin</h2>
 
@@ -64,7 +73,7 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
               <input type="text" placeholder="Search Here..." className="w-full h-full p-2 border-b border-t border-l border-l-slate-400 border-slate-200 focus:outline-none appearance-none focus:ring-0 placeholder:text-slate-600 rounded-tr-lg rounded-br-lg" />
             </div>
 
-            <div className="h-14 w-1/4 my-2 rounded-lg p-2 flex gap-4 justify-center item-center">
+            <div className="h-14 w-1/3 my-2 rounded-lg p-2 flex gap-4 justify-center item-center">
               <div className="relative">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-envelope-fill mt-4" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
@@ -79,8 +88,8 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
               </div>
               <Image src={imageAdmin} alt="admin" width={50} height={50} className="w-14 h-14 object-cover rounded-full border-2 border-white" />
               <div className="">
-                <p className="text-lg">Admin HRD</p>
-                <p className="text-sm">adminhr@gmail.com</p>
+                <p className="text-lg">{data?.user.name}</p>
+                <p className="text-sm">{data?.user.email}</p>
               </div>
             </div>
           </div>
@@ -99,8 +108,11 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
             <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Research & Development</p>
             <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Customer Services</p>
           </div>
-          {children}
+
         </main>
+        <section className="pl-52 pt-2 ">
+          {children}
+        </section>
 
       </div>
 
