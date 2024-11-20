@@ -621,8 +621,19 @@ export const dataTotalEmployeeByDepartement = [
         total: 9
     },
     {
-        title: "Customer Services",
+        title: "Customer Service",
         total: 14
     }
 ];
 
+type DataEducation = {
+    category: string;
+    total: number;
+};
+
+export const dataEmployeeEducation: DataEducation[] = [
+    { category: "Strata 1", total: 66 },
+    { category: "Diploma III", total: 25 },
+    { category: "SMA/SMK", total: 19 },
+    { category: "Strata 2", total: 17 },
+];

@@ -2,11 +2,12 @@ import SidebarNavigation from "@/utils/route-sidebar";
 import Link from "next/link";
 import Image from "next/image";
 import { imageAdmin } from "@/utils/getter-image";
-import Chart, { CategoryScale } from "chart.js/auto";
+import Chart, { registerables } from "chart.js/auto";
+import ChartDataLabels  from "chartjs-plugin-datalabels";
 import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-Chart.register(CategoryScale);
+Chart.register(...registerables, ChartDataLabels);
 
 const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
 
@@ -94,19 +95,19 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
           <div className="h-15 w-full my-2 flex gap-4 text-nowrap text-black overflow-x-auto no-scrollbar">
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Overall</p>
-            <p className="py-3 px-2 bg-gray-700 text-white rounded-lg cursor-pointer">IT Departmen</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Marketing</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Finance</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Bisnis Inteligence</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Sales Departemen</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Research & Development</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Customer Services</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">IT Departemen</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Bisnis Inteligence</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Sales Departemen</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Research & Development</p>
-            <p className="py-3 px-2 bg-gray-400 rounded-lg cursor-pointer">Customer Services</p>
+            <p className="py-3 px-2 bg-gray-700 text-white rounded-lg cursor-pointer">Overall</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departmen</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Marketing</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Finance</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departemen</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
+            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
           </div>
 
         </main>

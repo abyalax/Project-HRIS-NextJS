@@ -5,6 +5,7 @@ import { Bar } from "react-chartjs-2";
 import CardEmploye from "@/ui/card-employee";
 import { getMinValue, stylingStatus } from "@/utils/utils";
 import { useEffect, useState } from "react";
+import Attendance from "../analysis/chart/attendance";
 
 const AdminDashboard = () => {
 
@@ -51,17 +52,14 @@ const AdminDashboard = () => {
 
 
                 <div className="w-full">
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 justify-center">
 
-                        <div className="border-2 bg-white border-slate-200 h-fit w-1/2 rounded-lg m-1 p-2">
-                            <p className="text-center">Attendance Statistics {title ? title : "Weekly"}</p>
-                            <div className="h-[40vh]">
-                                <Bar data={chartData} options={configBar} />
-                            </div>
+                        <div className="w-1/2 h-28  m-1 py-4">
+                            <Attendance />
                         </div>
 
-                        <div className="flex flex-col">
-                            <div className="grid grid-cols-4 mt-6 mb-8 h-28 ">
+                        <div className="flex flex-col ">
+                            <div className="grid grid-cols-4 my-4 ">
 
                                 <CardEmploye data={dataEmployeeWFH} title="Works From Home" />
                                 <CardEmploye data={dataEmployeeOnVacation} title="On Vacation" />
@@ -71,14 +69,7 @@ const AdminDashboard = () => {
                             </div>
                             <div className="flex gap-4">
 
-                                <div className="w-1/5 bg-white rounded-lg border-2 border-slate-200 p-3 text-white">
-                                    <p className="text-center text-gray-700 font-semibold text-lg">Filter</p>
-                                    <button className="py-1 w-full rounded-md bg-green-500 my-1" onClick={() => { setDataAttendance(dataAttendanceWeekly); setTitle("Weekly") }}>Weekly</button>
-                                    <button className="py-1 w-full rounded-md bg-blue-500 my-1" onClick={() => { setDataAttendance(dataAttendanceMonthly); setTitle("Monthly") }}>Monthly</button>
-                                    <button className="py-1 w-full rounded-md bg-yellow-500 my-1" onClick={() => { setDataAttendance(dataAttendanceYearly); setTitle("Yearly") }}>Year</button>
-                                </div>
-
-                                <div className="border-2 bg-white w-4/5 border-slate-200 h-40 rounded-lg m-1 px-6 py-2">
+                                <div className="border-2 bg-white w-full border-slate-200 h-40 rounded-lg m-1 px-6 py-2">
                                     <h2 className="text-xl font-semibold">Today Information</h2>
                                     <div className="flex justify-between items-center">
                                         <p>Attendance Percentage</p>
