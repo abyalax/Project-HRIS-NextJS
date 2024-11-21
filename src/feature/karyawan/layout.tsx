@@ -1,11 +1,11 @@
-import SidebarNavigation from "@/utils/route-sidebar";
+import { SidebarNavigation } from "@/utils/route-sidebar";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const DashboardKaryawan = () => {
 
-  const routes = SidebarNavigation()
+  const { routesDashboard } = SidebarNavigation()
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const DashboardKaryawan = () => {
                 <span className="text-sm text-gray-500">Resourch Information System</span>
               </div>
 
-              {routes.map((item, index) => (
+              {routesDashboard.map((item, index) => (
                 <Link href={item.path} key={`item-${item.name}-${index}`}
                   className={`w-full flex flex-row gap-2 items-center py-3 pl-2 rounded-xl font-semibold hover:bg-[#f5f5f5] hover:text-gray-700
                   ${item.active && 'bg-blue-500 text-white'} `}>
