@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import { icons } from "./getter-image";
+import { settingsRoutes } from "./constant";
 
 interface RoutesType {
   path: string;
@@ -10,9 +11,12 @@ interface RoutesType {
   icon: ReactNode;
 }
 
-const SidebarNavigation = () => {
+export const SidebarNavigation = () => {
   const { pathname } = useRouter()
-  const routes: RoutesType[] = [
+
+  const isActive = settingsRoutes.includes(pathname);
+
+  const routesDashboard: RoutesType[] = [
     {
       path: "/admin",
       name: "Dashboard",
@@ -28,7 +32,7 @@ const SidebarNavigation = () => {
       name: "Requests",
       active: pathname === "/admin/requests",
       icon: (
-        <Image src={icons.req} alt="request" height={24}/>
+        <Image src={icons.req} alt="request" height={24} />
       )
     },
     {
@@ -64,9 +68,9 @@ const SidebarNavigation = () => {
       )
     },
     {
-      path: "/admin/settings",
+      path: "/admin/settings/profile",
       name: "Settings",
-      active: pathname === "/admin/settings",
+      active: isActive,
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-gear" viewBox="0 0 16 16">
           <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
@@ -75,7 +79,40 @@ const SidebarNavigation = () => {
       )
     },
   ];
-  return routes
-}
 
-export default SidebarNavigation
+
+  const routesAccountSettings = [
+    {
+      path: "/admin/settings/profile",
+      name: "Profile",
+      active: pathname === "/admin/settings/profile",
+    },
+    {
+      path: "/admin/settings/security",
+      name: "Security",
+      active: pathname === "/admin/settings/security",
+    },
+    {
+      path: "/admin/settings/member",
+      name: "Team Members",
+      active: pathname === "/admin/settings/member",
+    },
+    {
+      path: "/admin/settings/notification",
+      name: "Notifications",
+      active: pathname === "/admin/settings/notification",
+    },
+    {
+      path: "/admin/settings/export",
+      name: "Data Export",
+      active: pathname === "/admin/settings/export",
+    },
+    {
+      path: "/admin/settings/preference",
+      name: "Preference",
+      active: pathname === "/admin/settings/preference",
+    },
+  ]
+
+  return { routesDashboard, routesAccountSettings }
+}

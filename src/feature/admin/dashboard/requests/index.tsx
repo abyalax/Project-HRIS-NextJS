@@ -4,7 +4,7 @@ import { dataRequest } from "@/utils/dummy";
 import { stylingStatus } from "@/utils/utils";
 
 const AdminRequests = () => {
-    
+
     return (
         <DashboardAdminLayouts>
             <main className="p-2">
@@ -53,11 +53,16 @@ const AdminRequests = () => {
                                     </td>
                                     <td className="px-3 py-3">{data.date}</td>
                                     <td className="pl-3 pr-1 py-3">{data.notes?.length !== undefined && data.notes.length > 43 ? data.notes.slice(0, 43) + "..." : data.notes}</td>
+
                                     <td className="px-1 py-3 flex justify-center items-center ">
-                                        <button onClick={() => document.getElementById(`action-${index}`)?.classList.toggle('hidden')} className="relative">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                                            </svg>
+                                        <div className="relative">
+                                            <button onClick={() => document.getElementById(`action-${index}`)?.classList.toggle('hidden')} className="relative">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                                                </svg>
+
+
+                                            </button>
                                             <Dropdown ID={`action-${index}`} custom="right-4 top-2">
                                                 <div className="flex gap-2 flex-col p-2 rounded-lg border-2 border-slate-300 drop-shadow-2xl">
                                                     <button className="px-2.5 py-1.5 bg-blue-600 flex items-center justify-center rounded text-white text-sm">Details</button>
@@ -66,7 +71,8 @@ const AdminRequests = () => {
                                                     <button className="px-2.5 py-1.5 bg-yellow-500 flex items-center justify-center rounded text-white text-sm">Cancel</button>
                                                 </div>
                                             </Dropdown>
-                                        </button>
+                                        </div>
+
                                     </td>
                                 </tr>
                             ))}

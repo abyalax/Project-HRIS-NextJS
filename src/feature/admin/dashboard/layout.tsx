@@ -1,19 +1,24 @@
-import SidebarNavigation from "@/utils/route-sidebar";
+import { SidebarNavigation } from "@/utils/route-sidebar";
 import Link from "next/link";
 import Image from "next/image";
 import { imageAdmin } from "@/utils/getter-image";
 import Chart, { registerables } from "chart.js/auto";
-import ChartDataLabels  from "chartjs-plugin-datalabels";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { settingsRoutes } from "@/utils/constant";
 
 Chart.register(...registerables, ChartDataLabels);
 
 const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
 
   const { data } = useSession();
-  const routes = SidebarNavigation()
+  const { routesDashboard } = SidebarNavigation()
   const [isClient, setIsClient] = useState(false);
+
+  const path = usePathname();
+  const hide = settingsRoutes.includes(path)
 
   useEffect(() => {
     setIsClient(true)
@@ -35,10 +40,10 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
                 <span className="text-sm text-gray-500">Resourch Information System</span>
               </div>
 
-              {routes.map((item, index) => (
+              {routesDashboard.map((item, index) => (
                 <Link href={item.path} key={`item-${item.name}-${index}`}
-                  className={`w-full flex flex-row gap-2 items-center py-3 pl-2 rounded-xl font-semibold hover:bg-[#f5f5f5] hover:text-gray-700
-                  ${item.active && 'bg-blue-500 text-white'} `}>
+                  className={`w-full flex flex-row gap-2 items-center py-3 pl-2 rounded-xl font-semibold
+                  ${item.active ? 'bg-blue-500 text-white' : 'hover:bg-[#f5f5f5] hover:text-gray-700'} `}>
                   {item.icon}
                   {item.name}
                 </Link>
@@ -57,13 +62,11 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
               )}
             </div>
 
-
           </div>
         </aside>
 
         <main className="pl-52 pt-4 w-full sticky top-0 bg-[#edf0f7] z-20">
           <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-semibold">Login as Admin</h2>
 
             <div className="border-2 bg-white border-slate-200 h-12 w-1/2 my-2 rounded-lg flex">
               <div className="w-1/12 h-full flex items-center justify-center">
@@ -94,21 +97,23 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
               </div>
             </div>
           </div>
-          <div className="h-15 w-full my-2 flex gap-4 text-nowrap text-black overflow-x-auto no-scrollbar">
-            <p className="py-3 px-2 bg-gray-700 text-white rounded-lg cursor-pointer">Overall</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departmen</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Marketing</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Finance</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departemen</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
-            <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
-          </div>
+          {!hide && (
+            <div className="h-15 w-full my-2 flex gap-4 text-nowrap text-black overflow-x-auto no-scrollbar">
+              <p className="py-3 px-2 bg-gray-700 text-white rounded-lg cursor-pointer">Overall</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departmen</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Marketing</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Finance</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departemen</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
+              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
+            </div>
+          )}
 
         </main>
         <section className="pl-52 pt-2 ">

@@ -59,12 +59,14 @@ const Attendance = () => {
                 <p className="text-start text-lg">Attendance Statistic {title}</p>
 
                 <div className="relative">
+                  
                   <button onClick={() => document.getElementById("attendance")?.classList.toggle('hidden')} className="px-2 py-1 border-2 border-slate-200 rounded-lg flex justify-between items-center gap-8">
                     {title}
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                     </svg>
                   </button>
+
                   <Dropdown ID="attendance" custom="top-8 -right-1">
                     <div className="flex gap-2 w-32 flex-col p-2 rounded-lg border-2 border-slate-300 drop-shadow-2xl">
                       <button onClick={() => { setData(dataAttendanceWeekly); setTitle("Weekly"); document.getElementById("attendance")?.classList.add('hidden') }} className="hover:bg-slate-300 px-1 py-0.5 rounded">Weekly</button>
