@@ -30,12 +30,16 @@ export const stylingStatus = (status: string) => {
             return "bg-yellow-500";
         case "New":
             return "bg-blue-500";
+        case "In Review":
+            return "bg-blue-400";
         case "Approved":
             return "bg-green-500";
         case "Rejected":
             return "bg-red-500";
         case "Completed":
             return "bg-gray-400";
+        case "Canceled":
+            return "bg-gray-400 ";
         default:
             return "";
     }
@@ -60,25 +64,25 @@ export function convertLateDuration(timeString: string) {
  const time2 = "01:20:00";  // 1 hour 20 minutes
  const time3 = "00:00:00";  // On Time
  */
- type DataItem = Record<string, any>;
- export const getMinValue = (data: DataItem[], key: string): number => {
-     if (data.length === 0) return 0;
-     const min = Math.min(...data.map((item) => item[key]));
-     return Number(min);
- }; 
- 
- export const verify = (req: NextApiRequest, res: NextApiResponse, isAdmin: boolean, callback: Function) => {
-     const token = req.headers.authorization?.split(' ')[1];
-     if (token) {
-         jwt.verify(token, process.env.NEXTAUTH_SECRET || '',
-             async (err: any, decoded: any) => {
-                 if (decoded && (isAdmin ? decoded.role === 'admin' : true) ) {
-                     callback(decoded)
-                 } else {
-                     return responseAPI(res, false, 400, "Failed to verify token" )
-                 }
-             })
-     } else {
-         return responseAPI(res, false, 403, "Access Denied")
-     }
- }
+type DataItem = Record<string, any>;
+export const getMinValue = (data: DataItem[], key: string): number => {
+    if (data.length === 0) return 0;
+    const min = Math.min(...data.map((item) => item[key]));
+    return Number(min);
+};
+
+export const verify = (req: NextApiRequest, res: NextApiResponse, isAdmin: boolean, callback: Function) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (token) {
+        jwt.verify(token, process.env.NEXTAUTH_SECRET || '',
+            async (err: any, decoded: any) => {
+                if (decoded && (isAdmin ? decoded.role === 'admin' : true)) {
+                    callback(decoded)
+                } else {
+                    return responseAPI(res, false, 400, "Failed to verify token")
+                }
+            })
+    } else {
+        return responseAPI(res, false, 403, "Access Denied")
+    }
+}

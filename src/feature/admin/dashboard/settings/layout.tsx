@@ -1,6 +1,6 @@
 import Link from "next/link";
 import DashboardAdminLayouts from "../layout";
-import { SidebarNavigation } from "@/utils/route-sidebar";
+import { SidebarNavigation } from "@/routes/admin";
 
 const AdminSettingsLayouts = ({ children }: { children: React.ReactNode }) => {
   const { routesAccountSettings } = SidebarNavigation()

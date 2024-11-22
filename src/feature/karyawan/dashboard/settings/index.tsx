@@ -1,24 +1,22 @@
-import { imageAdmin } from "@/utils/getter-image";
+import { useState } from "react";
+import DashboardKaryawanLayouts from "../layout";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
-import AdminSettingsLayouts from "../layout";
+import { imageAdmin } from "@/utils/getter-image";
 import Input from "@/ui/input";
 
-
-const AdminSettingsProfile = () => {
+const KaryawanSettings = () => {
     const [disableProfile, setDisableProfile] = useState(true);
     const [disablePersonal, setDisablePersonal] = useState(true);
     const [disableAddress, setDisableAddress] = useState(true);
 
     const { data } = useSession();
-
     return (
-        <AdminSettingsLayouts>
-            <main className="w-5/6 pl-6 pr-2">
-                <h2 className="font-semibold my-2">My Profile</h2>
+        <DashboardKaryawanLayouts>
+            <main className="w-5/6 pl-6 pr-2 mb-96">
+                <h2 className="text-2xl font-semibold my-2">Profile</h2>
 
-                <div className="border-2 border-slate-200 rounded-lg p-3 flex my-4">
+                <div className="border-2 border-slate-200 bg-white rounded-lg p-3 flex my-4">
                     <div className="w-1/6">
                         <Image src={imageAdmin} alt="User Profile" width={100} height={100} className=" w-20 h-20 object-center object-cover rounded-full my-4 mx-auto" />
                     </div>
@@ -39,7 +37,7 @@ const AdminSettingsProfile = () => {
                     </div>
                 </div>
 
-                <div className="border-2 border-slate-200 rounded-lg p-3 my-4">
+                <div className="border-2 border-slate-200 rounded-lg p-3 my-4 bg-white">
 
                     <div className="flex justify-between w-full p-2">
                         <h2 className="font-bold">Personal Information</h2>
@@ -52,21 +50,21 @@ const AdminSettingsProfile = () => {
                     <div className="flex gap-8">
 
                         <div className="w-2/5 ">
-                            <Input disabled={disablePersonal} type="text" placeholder="Abigail" label="Username" />
+                            <Input disabled={disablePersonal} type="text" placeholder={data?.user.name.split(" ")[0]} label="Username" />
                             <Input disabled={disablePersonal} type="email" placeholder={data?.user.email} label="Email" />
                             <Input disabled={disablePersonal} type="text" placeholder="Team Manager" label="Bio" />
 
                         </div>
 
                         <div className="w-3/5 pr-6">
-                            <Input disabled={disablePersonal} type="text" placeholder="Yulisa" label="Last Name" />
+                            <Input disabled={disablePersonal} type="text" placeholder={data?.user.name} label="Full Name" />
                             <Input disabled={disablePersonal} type="number" placeholder="0877-1234-1234" label="Phone" />
                         </div>
 
                     </div>
                 </div>
 
-                <div className="border-2 border-slate-200 rounded-lg p-3 my-4">
+                <div className="border-2 border-slate-200 rounded-lg p-3 my-4 bg-white">
 
                     <div className="flex justify-between w-full p-2">
                         <h2 className="font-bold">Address</h2>
@@ -92,8 +90,8 @@ const AdminSettingsProfile = () => {
                 </div>
 
             </main>
-        </AdminSettingsLayouts>
+        </DashboardKaryawanLayouts>
     )
 };
 
-export default AdminSettingsProfile;
+export default KaryawanSettings;

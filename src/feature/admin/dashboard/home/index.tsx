@@ -1,50 +1,11 @@
 import Link from "next/link";
 import DashboardAdminLayouts from "../layout";
-import { dataAttendanceMonthly, dataAttendanceWeekly, dataAttendanceYearly, dataEmployeeDayOff, dataEmployeeOnVacation, dataEmployeeSickLeave, dataEmployeeWFH, dataRequest } from "@/utils/dummy";
-import { Bar } from "react-chartjs-2";
+import { dataEmployeeDayOff, dataEmployeeOnVacation, dataEmployeeSickLeave, dataEmployeeWFH, dataRequest } from "@/utils/dummy";
 import CardEmploye from "@/ui/card-employee";
-import { getMinValue, stylingStatus } from "@/utils/utils";
-import { useEffect, useState } from "react";
+import { stylingStatus } from "@/utils/utils";
 import Attendance from "../analysis/chart/attendance";
 
 const AdminDashboard = () => {
-
-    const [dataAttendance, setDataAttendance] = useState(dataAttendanceWeekly)
-    const [title, setTitle] = useState("")
-    const [minY, setMinY] = useState<number>(0)
-
-    useEffect(() => {
-        const min = getMinValue(dataAttendance, "attendance");
-        setMinY(min - 5);
-    }, [dataAttendance, minY]);
-
-
-    const chartData = {
-        labels: dataAttendance.map((data) => data.title),
-        datasets: [
-            {
-                label: "Total Attendance: ",
-                data: dataAttendance.map((data) => data.attendance),
-                backgroundColor: [
-                    "rgba(75,192,192,1)",
-                    "#50AF95",
-                    "#f3ba2f",
-                    "#2a71d0",
-                ],
-            }
-        ]
-    }
-    const configBar = {
-        plugins: {
-            title: { display: false, },
-            legend: { display: false }
-        },
-        scales: {
-            y: {
-                beginAtZero: false, min: minY, ticks: { stepSize: 2 }
-            }
-        }
-    }
 
     return (
         <DashboardAdminLayouts>

@@ -637,3 +637,46 @@ export const dataEmployeeEducation: DataEducation[] = [
     { category: "SMA/SMK", total: 19 },
     { category: "Strata 2", total: 17 },
 ];
+
+type DataAttendance = {
+    category: string;
+    total: number;
+};
+
+export const dataEmployeeAttendanceMontly: DataAttendance[] = [
+    { category: "Hadir", total: 15 },  // 15 hari hadir
+    { category: "Tidak Hadir", total: 5 },  // 5 hari tidak hadir
+    { category: "Terlambat", total: 6 },  // 6 hari terlambat
+    { category: "Cuti/Izin", total: 4 },  // 4 hari cuti atau izin
+];
+
+export const dataEmployeeAttendanceYearly: DataAttendance[] = [
+    { category: "Hadir", total: 180 },  // Total hari hadir selama 12 bulan
+    { category: "Tidak Hadir", total: 60 },  // Total hari tidak hadir selama 12 bulan
+    { category: "Terlambat", total: 72 },  // Total hari terlambat selama 12 bulan
+    { category: "Cuti/Izin", total: 48 },  // Total hari cuti atau izin selama 12 bulan
+];
+
+export const dataRequestPribadi = [
+    {
+        name: "Cuti Tahunan",
+        dateRange: "15 Desember 2023 - 2 Januari 2024",
+        reason: "Menemui keluarga di kampung halaman",
+        submissionDate: "Kamis, 2 Desember 2023",
+        status: "Pending",
+    },
+    {
+        name: "Izin Mendadak",
+        dateRange: "22 November 2024",
+        reason: "Acara keluarga mendadak",
+        submissionDate: "Jumat, 20 November 2024",
+        status: "Approved",
+    },
+    {
+        name: "Cuti Sakit",
+        dateRange: "1 - 3 Februari 2024",
+        reason: "Demam tinggi dan harus istirahat",
+        submissionDate: "Kamis, 30 Januari 2024",
+        status: "Rejected",
+    },
+];

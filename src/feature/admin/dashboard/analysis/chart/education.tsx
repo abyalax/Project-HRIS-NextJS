@@ -3,7 +3,6 @@ import { ChartData, ChartOptions } from "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 const Education = () => {
 
-    // Data chart
     const dataChart: ChartData<"pie", number[], string> = {
         labels: dataEmployeeEducation.map((data) => data.category),
         datasets: [
@@ -21,7 +20,6 @@ const Education = () => {
         ],
     };
 
-    // Konfigurasi chart
     const configChart: ChartOptions<"pie"> = {
         responsive: true,
         plugins: {
@@ -55,7 +53,6 @@ const Education = () => {
         },
         aspectRatio: 1,
     };
-
 
     return (
         <div className="border-2 bg-white border-slate-200 flex justify-center items-center rounded-lg my-4 mr-4">

@@ -1,30 +1,25 @@
-import { SidebarNavigation } from "@/routes/admin";
+import { SidebarNavigation } from "@/routes/karyawan";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { imageAdmin } from "@/utils/getter-image";
-import { signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { settingsRoutes } from "@/utils/constant";
 import Chart, { registerables } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 Chart.register(...registerables, ChartDataLabels);
 
-const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
+const DashboardKaryawanLayouts = ({ children }: { children: React.ReactNode }) => {
 
-  const { data } = useSession();
   const { routesDashboard } = SidebarNavigation()
   const [isClient, setIsClient] = useState(false);
 
-  const path = usePathname();
-  const hide = settingsRoutes.includes(path)
+  const { data } = useSession();
 
   useEffect(() => {
     setIsClient(true)
     return () => { };
   }, []);
-
 
   return (
 
@@ -97,26 +92,9 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
               </div>
             </div>
           </div>
-          {!hide && (
-            <div className="h-15 w-full my-2 flex gap-4 text-nowrap text-black overflow-x-auto no-scrollbar">
-              <p className="py-3 px-2 bg-gray-700 text-white rounded-lg cursor-pointer">Overall</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departmen</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Marketing</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Finance</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">IT Departemen</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Bisnis Inteligence</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Sales Departemen</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Research & Development</p>
-              <p className="py-3 px-2 bg-gray-400 hover:bg-gray-500 rounded-lg cursor-pointer">Customer Services</p>
-            </div>
-          )}
 
         </main>
-        <section className="pl-52 pt-2 ">
+        <section className="pl-52 pt-2">
           {children}
         </section>
 
@@ -128,4 +106,4 @@ const DashboardAdminLayouts = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-export default DashboardAdminLayouts;
+export default DashboardKaryawanLayouts;
