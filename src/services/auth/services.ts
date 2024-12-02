@@ -12,8 +12,8 @@ export async function signUp(userData: adminType, callback: Function) {
     else {
         userData.password = await bcrypt.hash(userData.password, 10)
         await sql`
-        INSERT INTO karyawan (nama, email, password, role) 
-        VALUES (${userData.nama}, ${userData.email}, ${userData.password}, 'karyawan')`
+        INSERT INTO karyawan (name, email, password, role) 
+        VALUES (${userData.name}, ${userData.email}, ${userData.password}, 'karyawan')`
         callback(true);
     }
 }
@@ -40,19 +40,13 @@ interface googleType {
 }
 
 export async function loginWithGoogle(data: googleType, callback: Function) {
-    const admin = await sql`SELECT * FROM admin WHERE id_admin = ${data.id}`
-    if (admin.length > 0) {
-        callback(admin[0])
-        return;
-    }
-
     const karyawan = await sql`SELECT * FROM karyawan WHERE id_karyawan = ${data.id}`
     if (karyawan.length > 0) {
         callback(karyawan[0])
     } else {
         data.password = ''
         const res = await sql`
-            INSERT INTO karyawan ( id_karyawan ,nama, email, password, role) 
+            INSERT INTO karyawan ( id_karyawan , name, email, password, role) 
             VALUES (${data.id}, ${data.name}, ${data.email}, ${data.password}, 'karyawan')`
         if (res) {
             callback(data)

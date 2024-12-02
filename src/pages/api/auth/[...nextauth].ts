@@ -57,7 +57,7 @@ const authOptions: AuthOptions = {
             console.log("JWT Callback - User:", user);
             if (account?.provider === "credentials") {
                 token.id = user.id;
-                token.name = user.nama;
+                token.name = user.name;
                 token.email = user.email;
                 token.image = user.image;
                 token.role = user.role

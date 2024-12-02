@@ -644,17 +644,17 @@ type DataAttendance = {
 };
 
 export const dataEmployeeAttendanceMontly: DataAttendance[] = [
-    { category: "Hadir", total: 15 },  // 15 hari hadir
-    { category: "Tidak Hadir", total: 5 },  // 5 hari tidak hadir
-    { category: "Terlambat", total: 6 },  // 6 hari terlambat
-    { category: "Cuti/Izin", total: 4 },  // 4 hari cuti atau izin
+    { category: "Hadir", total: 15 },
+    { category: "Tidak Hadir", total: 5 },
+    { category: "Terlambat", total: 6 },
+    { category: "Cuti/Izin", total: 4 },
 ];
 
 export const dataEmployeeAttendanceYearly: DataAttendance[] = [
-    { category: "Hadir", total: 180 },  // Total hari hadir selama 12 bulan
-    { category: "Tidak Hadir", total: 60 },  // Total hari tidak hadir selama 12 bulan
-    { category: "Terlambat", total: 72 },  // Total hari terlambat selama 12 bulan
-    { category: "Cuti/Izin", total: 48 },  // Total hari cuti atau izin selama 12 bulan
+    { category: "Hadir", total: 200 },
+    { category: "Tidak Hadir", total: 40 },
+    { category: "Terlambat", total: 68 },
+    { category: "Cuti/Izin", total: 44 },
 ];
 
 export const dataRequestPribadi = [
@@ -680,3 +680,31 @@ export const dataRequestPribadi = [
         status: "Rejected",
     },
 ];
+
+export const dataGroupingDepartemen = [
+    {
+        label: "Revenue Teams",
+        departments: [
+            "Marketing",
+            "Sales Department"
+        ],
+        description: "Teams responsible for generating revenue."
+    },
+    {
+        label: "Support Teams",
+        departments: [
+            "Customer Service",
+            "IT Department"
+        ],
+        description: "Teams providing operational and customer support."
+    },
+    {
+        label: "Strategic Teams",
+        departments: [
+            "Finance",
+            "Research & Development",
+            "Business Intelligence"
+        ],
+        description: "Teams supporting long-term strategies and growth."
+    }
+]

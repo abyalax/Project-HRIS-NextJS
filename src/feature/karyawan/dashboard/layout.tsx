@@ -6,6 +6,7 @@ import Image from "next/image";
 import { imageAdmin } from "@/utils/getter-image";
 import Chart, { registerables } from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import { useRouter } from "next/router";
 
 Chart.register(...registerables, ChartDataLabels);
 
@@ -15,6 +16,7 @@ const DashboardKaryawanLayouts = ({ children }: { children: React.ReactNode }) =
   const [isClient, setIsClient] = useState(false);
 
   const { data } = useSession();
+  const { push } = useRouter()
 
   useEffect(() => {
     setIsClient(true)
@@ -85,8 +87,8 @@ const DashboardKaryawanLayouts = ({ children }: { children: React.ReactNode }) =
                 </svg>
                 <span className="absolute top-4  z-10 right-0 h-2 w-2 rounded-full bg-red-500 ">.</span>
               </div>
-              <Image src={imageAdmin} alt="admin" width={50} height={50} className="w-14 h-14 object-cover rounded-full border-2 border-white cursor-pointer" />
-              <div className="cursor-pointer">
+              <Image onClick={() => push("/karyawan/settings")} src={imageAdmin} alt="admin" width={50} height={50} className="w-14 h-14 object-cover rounded-full border-2 border-white cursor-pointer" />
+              <div onClick={() => push("/karyawan/settings")} className="cursor-pointer">
                 <p className="text-lg">{data?.user.name}</p>
                 <p className="text-sm">{data?.user.email}</p>
               </div>

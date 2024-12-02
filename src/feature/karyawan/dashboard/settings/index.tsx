@@ -50,14 +50,14 @@ const KaryawanSettings = () => {
                     <div className="flex gap-8">
 
                         <div className="w-2/5 ">
-                            <Input disabled={disablePersonal} type="text" placeholder={data?.user.name.split(" ")[0]} label="Username" />
+                            <Input disabled={disablePersonal} type="text" placeholder={data?.user.name ?? "Something Wrong"} label="Username" />
                             <Input disabled={disablePersonal} type="email" placeholder={data?.user.email} label="Email" />
                             <Input disabled={disablePersonal} type="text" placeholder="Team Manager" label="Bio" />
 
                         </div>
 
                         <div className="w-3/5 pr-6">
-                            <Input disabled={disablePersonal} type="text" placeholder={data?.user.name} label="Full Name" />
+                            <Input disabled={disablePersonal} type="text" placeholder={data?.user.name ?? "Something Wrong"} label="Full Name" />
                             <Input disabled={disablePersonal} type="number" placeholder="0877-1234-1234" label="Phone" />
                         </div>
 

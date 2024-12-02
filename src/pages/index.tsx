@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import { imageAdmin, user } from "@/utils/getter-image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,6 +19,7 @@ const geistMono = localFont({
 export default function Home() {
 
   const { status, data } = useSession();
+  const { push } = useRouter();
 
   return (
     <div className={`w-full font-[family-name:var(--font-geist-sans)] min-h-screen  bg-[#edf0f7]  text-gray-700 ${geistSans.variable} ${geistMono.variable}`}>
@@ -44,7 +46,7 @@ export default function Home() {
               <>
                 <Image src={imageAdmin} alt="admin" width={38} height={38} className="w-14 h-14 object-cover rounded-full border-2 border-white" />
                 <div className="">
-                  <p className="text-lg">{data?.user.name}</p>
+                  <p className="text-lg">{data?.user.name ? data?.user.name : data?.user.email.split("@")[0]}</p>
                   <p className="text-sm">{data?.user.email}</p>
                 </div>
               </>
@@ -67,9 +69,15 @@ export default function Home() {
             password: "adminPass"
           })}</p>
 
-          <button className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            <Link href="/admin" >Go to Dashboard</Link>
-          </button>
+          <h2 className="mt-6 text-lg font-semibold mb-2">Login As</h2>
+          <div className="flex justify-center items-center gap-4">
+            <button onClick={() => push("/admin")} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+              <Link href="/admin" >Admin</Link>
+            </button>
+            <button onClick={() => push("/karyawan")} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+              <Link href="/karyawan" >Karyawan</Link>
+            </button>
+          </div>
         </section>
 
         <section id="features" className="mt-10 w-full px-20">

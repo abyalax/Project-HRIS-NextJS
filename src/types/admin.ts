@@ -1,12 +1,12 @@
 interface adminType {
     email: string;
     password: string;
-    nama: string;
+    name: string;
     role: string;
 }
 
 interface karyawanType {
-    nama: string;
+    name: string;
     alamat: string;
     no_telephone: string;
     tanggal_lahir: Date;
