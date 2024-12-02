@@ -8,7 +8,7 @@ const RegisterView = () => {
     const { push } = useRouter()
 
     const [formState, setFormState] = useState({
-        nama: "",
+        name: "",
         email: "",
         password: ""
     })
@@ -31,7 +31,7 @@ const RegisterView = () => {
         }
         try {
             const data = {
-                nama: formState.nama,
+                name: formState.name,
                 email: formState.email,
                 password: formState.password,
                 role: "karyawan"
@@ -63,7 +63,7 @@ const RegisterView = () => {
                 </div>
                 <form className="w-full" onSubmit={onSubmit}>
 
-                    <input type="text" name="nama" placeholder="Masukkan Nama Lengkap" onChange={(e) => onChange(e, "nama")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded-lg" />
+                    <input type="text" name="name" placeholder="Masukkan name Lengkap" onChange={(e) => onChange(e, "name")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded-lg" />
                     <p className="text-xs mb-4 text-background font-medium mt-0">Contoh: Budi Hartanto</p>
 
                     <input type="email" name="email" placeholder="Masukkan Email" onChange={(e) => onChange(e, "email")} className="border border-gray-400 w-full p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded-lg" />
