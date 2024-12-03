@@ -22,6 +22,9 @@ const config: Config = {
         foreground: "var(--foreground)",
         primary: "var(--primary)",
       },
+      dropShadow: {
+        "blue": "0 10px 28px rgba(59, 130, 246, 1)",
+      }
     },
   },
   plugins: [],

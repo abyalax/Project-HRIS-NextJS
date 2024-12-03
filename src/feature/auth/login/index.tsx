@@ -54,7 +54,7 @@ const LoginView = () => {
     const loginGoogle = async () => {
         try {
             setIsLoading(true)
-            console.log({callbackUrl})
+            console.log({ callbackUrl })
             const res = await signIn("google", { callbackUrl })
             if (res) {
                 push(callbackUrl)
@@ -70,7 +70,13 @@ const LoginView = () => {
     }
 
     return (
-        <div className="flex min-h-screen justify-center items-center bg-[#edf0f7]">
+        <div className="relative flex min-h-screen justify-center items-center bg-[#edf0f7]">
+            <button onClick={() => push("/")} className="absolute flex gap-3 top-4 left-4 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 text-lg font-semibold rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-arrow-left-short text-2xl font-semibold" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+                </svg>
+                Back To Home
+            </button>
             <div className="bg-white shadow-2xl  p-10 max-w-[400px] rounded-xl xl:w-2/3 lg:w-1/3 md:w-1/2  sm:w-2/3">
                 <div className="flex justify-between items-center my-8">
                     <h2 className="text-2xl font-semibold ">Masuk ke HRIS</h2>
